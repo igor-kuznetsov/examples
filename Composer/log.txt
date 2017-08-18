@@ -1,2 +1,0 @@
-[2017-08-18 16:35:01] test.WARNING: some test warning goes here [] []
-[2017-08-18 16:35:01] test.ERROR: some error goes here [] []
