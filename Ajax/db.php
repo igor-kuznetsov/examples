@@ -6,7 +6,7 @@ $response = [
 ];
 
 try {
-    $mysqli = new mysqli('localhost', 'root', 'MD56kq', 'mvc');
+    $mysqli = new mysqli('localhost', 'root', '', 'mvc');
 
     if ($mysqli->connect_errno) {
         throw new Exception($mysqli->connect_error);

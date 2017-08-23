@@ -35,9 +35,11 @@
                 type: 'post',
                 data: {
                     text: 'JQuery',
-                    h: 15
+                    h: 15,
+                    a: {
+                        f: 10
+                    }
                 },
-                dataType: 'html',
                 success: function (data) {
                     $('#container').html(data);
                     console.log('OK');
