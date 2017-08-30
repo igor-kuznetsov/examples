@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div>test div</div>
+    <p class="test1">test p</p>
+    <p>test p without class</p>
+    <div class="test4">
+        <ul id="test2">
+            <li>test ul li 1</li>
+            <li id="test3">test ul li 2</li>
+            <li>test ul li 3</li>
+            <li>
+                <ul class="btn btn-sm">
+                    <li>inner li 1</li>
+                    <li>inner li 2</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <form>
+        <label for="login">Login</label>
+        <div>
+            <input name="email">
+        </div>
+        <input name="login" id="login">
+        <input name="password" type="password">
+    </form>
+    <script>
+        // ============== Selectors ===========
+        // Basic
+        //console.log($('*'));
+        //console.log($('.test1'));
+        //console.log($('#test2'));
+        //console.log($('div'));
+        //console.log($(document)); // DOM
+        //console.log($('div, .test1, #test2')); // multiple selector
+
+        // attributes
+        //console.log($('p[class]'));
+        //console.log($('input[name="login"]'));
+        //console.log($('input[name!="login"]'));
+        //console.log($('input[name^="login"]')); // starts with
+        //console.log($('input[name$="login"]')); // ends with
+        //console.log($('input[name*="login"]')); // includes
+        //console.log($('input[name|="login"]'));
+        //console.log($('input[name~="login"]')); // includes separate word
+
+        // filters
+//        console.log($('li:first'));
+//        console.log($('li:last'));
+//        console.log($('li:even'));
+//        console.log($('li:odd'));
+//        console.log($('input:focus'));
+
+        // hierarchy
+        //console.log($('#test2 li'));
+        //console.log($('#test2 > li'));
+        //console.log($('label + input'));
+        //console.log($('#test3 ~ li'));
+        // ======================================
+        // ============= Document Ready =========
+        function myDocReady() {
+            //
+        }
+
+        $(document).ready(myDocReady);
+
+        $(document).ready(function () {
+            //
+        });
+
+        $(function () {
+            //
+        });
+
+//        jQuery.noConflict();
+//        jQuery(document).ready(function ($) {
+//            $('div').hide();
+//        });
+        // ========================================
+        // ===== DOM browsing =====================
+        $(function () {
+            //$('#test3').parent(); // ul
+            //$('#test3').parents('.test4'); // div
+            //$('input[type="submit"]').parents('form');
+            //console.log($('ul').children());
+            //$('ul').find('ul');
+            //console.log($('li').next());
+//            $('li').first();
+//            $('li').last();
+        });
+        // ==== DOM modifying =====================
+        var divClass = $('.test4').attr('class'); // get
+        $('.test4').attr('id', 'testID');
+        //console.log($('.test4'));
+        $('#test3').hasClass('test5'); // true/false
+        $('#test3').addClass('myclass my2 my3'); // $('#test3').attr('class', 'myclass');
+        $('#test3').removeClass('myclass');
+        $('#test3').toggleClass('active');
+    </script>
+    <div>
+        djfhdjfh
+    </div>
+</body>
+</html>
