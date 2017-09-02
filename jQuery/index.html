@@ -22,13 +22,16 @@
             </li>
         </ul>
     </div>
-    <form>
-        <label for="login">Login</label>
+    <form id="form">
         <div>
             <input name="email">
         </div>
-        <input name="login" id="login">
-        <input name="password" type="password">
+        <select name="t">
+            <option value="test1">test1</option>
+            <option value="test2">test2</option>
+            <option value="test3">test3</option>
+        </select>
+        <input type="submit">
     </form>
     <script>
         // ============== Selectors ===========
@@ -95,16 +98,136 @@
 //            $('li').last();
         });
         // ==== DOM modifying =====================
-        var divClass = $('.test4').attr('class'); // get
-        $('.test4').attr('id', 'testID');
-        //console.log($('.test4'));
-        $('#test3').hasClass('test5'); // true/false
-        $('#test3').addClass('myclass my2 my3'); // $('#test3').attr('class', 'myclass');
-        $('#test3').removeClass('myclass');
-        $('#test3').toggleClass('active');
+//        var divClass = $('.test4').attr('class'); // get
+//        $('.test4').attr('id', 'testID'); // set
+//        //console.log($('.test4'));
+        var $test3 = $('#test3');
+//        $test3.hasClass('test5'); // true/false
+//        $test3.addClass('myclass my2 my3'); // $('#test3').attr('class', 'myclass');
+//        $test3.removeClass('myclass');
+//        $test3.toggleClass('active');
+//        $test3.css('color', 'red'); // $test3.attr('style', 'color:red');
+//        $test3.css('color');
+//        $test3.html('tetetetete'); //<div id="test3">tetetetete</div>
+//        $test3.html();
+//        $('input').val();//get
+//        $('input').val('etet');//set
+        $(document).on('keyup', '#login', function () {
+            var t = $(this).val();
+            console.log(t);
+        });
+        $test3.prepend('<div>dynamic div 1 added by jquery</div>');
+        $test3.append('<div>dynamic div 2 added by jquery</div>');
+        $test3.before('<li>dynamic li before</li>');
+        $test3.after('<li>dynamic li after</li>');
+
+        //$test3.remove();
+        $test3.empty(); // $test3.html('');
+        //=========================================
+        //==================== Effects ============
+        $(function () {
+            var $test = $('#testdiv');
+            $test.css('border', '1px solid black');
+            $test.css('width', '200px');
+            $test.css('height', '200px');
+            $test.css('background-color', 'green');
+            //------------
+            $test.hide(); // display:none
+            $test.show();
+            $test.toggle(); // hide
+            $test.toggle(); // show
+            //-------
+//            $test.fadeOut(2000); // opacity to 0
+//            $test.fadeIn(2000); // opacity to 1
+//            $test.fadeTo(2000, 0.5); // opacity to 0.5
+            //----------
+//            $test.slideUp(2000);
+//            $test.slideDown(2000);
+//            $test.slideToggle(); // slideUp
+//            $test.slideToggle(); // slideDown
+            //========================================
+            //================== Events ==============
+//            $(window).resize(function() {
+//                console.log($(this).width());
+//                if ($(this).width() > 620) {
+//                    console.log('breakpoint');
+//                }
+//            });
+//            $(window).scroll(function() {
+//                var windowHeight = $(this).height();
+//                var currentHeight = $(this).scrollTop();
+//                if (currentHeight > 100) {
+//                    alert('test');
+//                }
+//            });
+            //-------------
+            var $form = $('#form');
+            $form.submit(function (e) {
+                e.preventDefault();
+                alert('submit');
+            });
+            $form.find('input').focus(function () {
+                console.log('focus');
+            });
+            $form.find('input').blur(function () {
+                console.log('blur');
+            });
+            $form.find('select').change(function () {
+                console.log('change');
+                console.log($(this).val());
+            });
+            //--------------
+            $form.find('input').keypress(function () {
+                console.log('key pressed');
+            });
+            $form.find('input').keydown(function () {
+                console.log('key down');
+            });
+            $form.find('input').keyup(function () {
+                console.log('key up');
+            });
+            //----------
+            $test.click(function () {
+                console.log('div clicked');
+            });
+            $test.hover(function () {
+                console.log('mouse over div');
+            });
+            $('div').click(function () {
+                //
+            });
+            //--------------
+            $('div').on('click', function () {
+                // the same as .click()
+            });
+            $(document).on('click', '#testdiv div', function () {
+                // event handler saved to document
+            });
+            $('#testdiv').on('click', 'div', function () {
+                // event handler saved to document
+            });
+            //===============================
+            $form.on('submit', function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                $.ajax({
+                    url: '/',
+                    type: 'post',
+                    data: $this.serialize(),
+                    success: function () {
+                        $this[0].reset();
+                    }
+                });
+            });
+        });
     </script>
-    <div>
-        djfhdjfh
+    <div id="testdiv">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
     </div>
 </body>
 </html>
